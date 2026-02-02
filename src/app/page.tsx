@@ -1,309 +1,180 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const PortfolioPage = () => {
-  const [activeSection, setActiveSection] = useState('hero');
-
-  // Simple animation effect for section transitions
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
-
-      const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const height = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+export default function Home() {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="text-xl font-bold">
-            <span className="text-gold">S</span>ienna
-          </div>
-          <div className="hidden md:flex space-x-8">
-            {['hero', 'about', 'skills', 'projects', 'contact'].map((section) => (
-              <a
-                key={section}
-                href={`#${section}`}
-                className={`apple-transition ${
-                  activeSection === section ? 'text-gold' : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
+    <>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+          `
+        }}
+      />
 
-      {/* Hero Section */}
-      <section 
-        id="hero" 
-        className="min-h-screen flex items-center justify-center relative pt-16"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <div className="mb-6">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
-              <span className="block">Hello, I'm</span>
-              <span className="text-gold">Sienna</span>
-            </h1>
-            <div className="h-1 w-32 bg-gold mx-auto my-6"></div>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-              Designer & Computer Science Double Major | AI Tools Master | Tech Innovator
-            </p>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        {/* Navigation */}
+        <nav className="fixed w-full bg-white/80 backdrop-blur-md z-10 border-b border-gray-200">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div className="text-xl font-semibold text-gray-900">Sienna</div>
+            <div className="flex space-x-8">
+              <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">About</a>
+              <a href="#skills" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Skills</a>
+              <a href="#projects" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Projects</a>
+              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Contact</a>
+            </div>
           </div>
-          <div className="mt-12">
-            <a 
-              href="#contact" 
-              className="inline-block bg-gold text-black px-8 py-4 rounded-full font-medium apple-transition hover:bg-gold-light transform hover:scale-105"
-            >
-              Get In Touch
-            </a>
-          </div>
-        </div>
-      </section>
+        </nav>
 
-      {/* About Section */}
-      <section 
-        id="about" 
-        className="py-20 bg-gradient-to-b from-black to-gray-900"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">About <span className="text-gold">Me</span></h2>
-            <div className="h-1 w-24 bg-gold mx-auto"></div>
-          </div>
-          
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              I'm a passionate designer and computer science student with expertise in creating 
-              innovative solutions that blend aesthetics with functionality. My dual focus allows 
-              me to understand both the creative and technical aspects of digital products.
-            </p>
-            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-              With a strong foundation in AI tools and emerging technologies, I leverage the latest 
-              innovations to create designs that are not only visually stunning but also technically 
-              sound and user-centered.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              <div className="bg-gray-800/50 p-6 rounded-xl apple-transition hover:apple-glow">
-                <h3 className="text-xl font-semibold text-gold mb-2">Design Expertise</h3>
-                <p className="text-gray-300">Creating beautiful, intuitive interfaces with a focus on user experience</p>
-              </div>
-              <div className="bg-gray-800/50 p-6 rounded-xl apple-transition hover:apple-glow">
-                <h3 className="text-xl font-semibold text-gold mb-2">Tech Innovation</h3>
-                <p className="text-gray-300">Implementing cutting-edge technologies to solve complex problems</p>
-              </div>
-              <div className="bg-gray-800/50 p-6 rounded-xl apple-transition hover:apple-glow">
-                <h3 className="text-xl font-semibold text-gold mb-2">AI Mastery</h3>
-                <p className="text-gray-300">Utilizing artificial intelligence to enhance creativity and efficiency</p>
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 px-6">
+          <div className="max-w-6xl mx-auto text-center">
+            <div className="mb-6">
+              <div className="bg-gray-200 border-2 border-dashed rounded-full w-32 h-32 mx-auto mb-6" />
+              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4">Sienna</h1>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+                Design + Computer Science Specialist | AI Tools Expert | Tech Innovation Enthusiast
+              </p>
+              <div className="flex justify-center space-x-4">
+                <button 
+                  className={`px-8 py-3 bg-gray-900 text-white rounded-lg transition-all duration-300 ease-in-out ${isHovered ? 'bg-gray-700' : ''} hover:shadow-lg hover:-translate-y-0.5`}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
+                  View Projects
+                </button>
+                <button className="px-8 py-3 bg-transparent border border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-0.5">
+                  Contact Me
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Skills Section */}
-      <section 
-        id="skills" 
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">My <span className="text-gold">Skills</span></h2>
-            <div className="h-1 w-24 bg-gold mx-auto"></div>
-          </div>
-          
+        {/* About Section */}
+        <section id="about" className="py-20 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">About Me</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-2xl font-semibold text-gold mb-6">Design Skills</h3>
-                <ul className="space-y-4">
-                  {[
-                    'UI/UX Design', 
-                    'Digital Illustration', 
-                    'Typography', 
-                    'Brand Identity',
-                    'Prototyping',
-                    'User Research'
-                  ].map((skill, index) => (
-                    <li 
-                      key={index} 
-                      className="flex items-center border-b border-gray-800 pb-4 apple-transition hover:border-gold"
-                    >
-                      <span className="w-2 h-2 bg-gold rounded-full mr-3"></span>
-                      <span>{skill}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Hi, I'm Sienna, a 26-year-old tech-savvy creator with a Master's degree specializing in both Design and Computer Science. 
+                  I thrive at the intersection of design and technology, bringing a unique perspective to every project.
+                </p>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  My passion lies in exploring cutting-edge AI tools and turning them into creative superpowers. 
+                  I specialize in AI-driven aesthetic design with a keen tech-sensitivity for innovative tools and trends.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  With expertise in leveraging AI for creative and technical work, I'm always on a continuous learning journey, 
+                  exploring new knowledge and skills.
+                </p>
               </div>
-              
-              <div>
-                <h3 className="text-2xl font-semibold text-gold mb-6">Technical Skills</h3>
-                <ul className="space-y-4">
-                  {[
-                    'Computer Science Fundamentals', 
-                    'AI Tools & Applications', 
-                    'Web Development', 
-                    'JavaScript/TypeScript',
-                    'React/Next.js',
-                    'Responsive Design'
-                  ].map((skill, index) => (
-                    <li 
-                      key={index} 
-                      className="flex items-center border-b border-gray-800 pb-4 apple-transition hover:border-gold"
-                    >
-                      <span className="w-2 h-2 bg-gold rounded-full mr-3"></span>
-                      <span>{skill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            
-            <div className="mt-16 bg-gray-900/50 p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold text-gold mb-4">Education</h3>
-              <div className="space-y-4">
-                <div className="border-l-2 border-gold pl-4 py-2">
-                  <h4 className="text-lg font-medium">Double Major: Design + Computer Science</h4>
-                  <p className="text-gray-400">Combining creative and technical disciplines</p>
-                </div>
+              <div className="bg-gray-100 rounded-xl p-4 flex items-center justify-center">
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-80" />
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Projects Section */}
-      <section 
-        id="projects" 
-        className="py-20 bg-gradient-to-b from-gray-900 to-black"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Featured <span className="text-gold">Projects</span></h2>
-            <div className="h-1 w-24 bg-gold mx-auto"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <div 
-                key={item} 
-                className="bg-gray-800/50 rounded-xl overflow-hidden apple-transition hover:apple-glow"
-              >
-                <div className="h-48 bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
-                  <div className="text-5xl">📱</div>
+        {/* Skills Section */}
+        <section id="skills" className="py-20 px-6 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Skills & Expertise</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { title: 'AI-Driven Aesthetic', desc: 'High-end design sensibility powered by AI', icon: '🎨' },
+                { title: 'Tech Sensitivity', desc: 'Quick to spot innovative tools and trends', icon: '🔍' },
+                { title: 'Tool Mastery', desc: 'Expert at leveraging AI for creative work', icon: '🛠️' },
+                { title: 'Continuous Learning', desc: 'Always exploring new knowledge and skills', icon: '📚' }
+              ].map((skill, index) => (
+                <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition-shadow duration-300 hover:shadow-md">
+                  <div className="text-3xl mb-3">{skill.icon}</div>
+                  <h3 className="font-semibold text-lg text-gray-900 mb-2">{skill.title}</h3>
+                  <p className="text-gray-600 text-sm">{skill.desc}</p>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Project Title {item}</h3>
-                  <p className="text-gray-400 mb-4">
-                    A showcase of design and technical skills combined to create innovative solutions.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {['React', 'Tailwind', 'AI'].map((tech, idx) => (
-                      <span 
-                        key={idx} 
-                        className="text-xs bg-gray-700 text-gold px-3 py-1 rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-20 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Featured Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { title: 'AI Design System', desc: 'An innovative design system powered by AI tools', tags: ['Design', 'AI'] },
+                { title: 'Tech Innovation Dashboard', desc: 'Real-time tracking of emerging technologies', tags: ['Data', 'Visualization'] },
+                { title: 'Creative Workflow', desc: 'Optimized workflow for designers and developers', tags: ['Productivity', 'UX'] }
+              ].map((project, index) => (
+                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <div className="bg-gray-100 w-full h-48 flex items-center justify-center">
+                    <div className="bg-gray-200 border-2 border-dashed w-full h-full" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-semibold text-lg text-gray-900">{project.title}</h3>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Featured</span>
+                    </div>
+                    <p className="text-gray-600 text-sm mb-4">{project.desc}</p>
+                    <div className="flex space-x-2 mb-4">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span key={tagIndex} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">{tag}</span>
+                      ))}
+                    </div>
+                    <button className="text-gray-900 text-sm font-medium hover:underline transition-colors duration-300">View Details →</button>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section 
-        id="contact" 
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Get In <span className="text-gold">Touch</span></h2>
-            <div className="h-1 w-24 bg-gold mx-auto"></div>
+        {/* Contact Section */}
+        <section id="contact" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+              Interested in working together or have a project in mind? Feel free to reach out!
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <div className="bg-gray-800/50 px-6 py-4 rounded-lg backdrop-blur-sm border border-gray-700/50">
+                <p className="font-medium">Email</p>
+                <p className="text-gray-300">hello@sienna.design</p>
+              </div>
+              <div className="bg-gray-800/50 px-6 py-4 rounded-lg backdrop-blur-sm border border-gray-700/50">
+                <p className="font-medium">Location</p>
+                <p className="text-gray-300">Shanghai, China</p>
+              </div>
+            </div>
+            <div className="mt-10 flex justify-center space-x-6">
+              {['𝕏', 'GitHub', 'LinkedIn'].map((platform, index) => (
+                <a 
+                  key={index} 
+                  href="#" 
+                  className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition-colors duration-300"
+                  aria-label={platform}
+                >
+                  {platform.charAt(0)}
+                </a>
+              ))}
+            </div>
           </div>
-          
-          <div className="max-w-2xl mx-auto bg-gray-900/50 p-8 rounded-2xl">
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent apple-transition"
-                  placeholder="Your name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent apple-transition"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent apple-transition"
-                  placeholder="Your message here..."
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-gold text-black py-3 rounded-lg font-medium apple-transition hover:bg-gold-light transform hover:scale-[1.02]"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="py-10 border-t border-gray-800">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-500">
-            © {new Date().getFullYear()} Sienna. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
+        {/* Footer */}
+        <footer className="py-10 px-6 bg-black text-white text-center">
+          <p className="text-gray-400">© {new Date().getFullYear()} Sienna. All rights reserved.</p>
+        </footer>
+      </div>
+    </>
   );
-};
-
-export default PortfolioPage;
+}

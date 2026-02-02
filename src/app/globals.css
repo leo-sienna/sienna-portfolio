@@ -43,32 +43,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  
-  .apple-transition {
-    @apply transition-all duration-300 ease-out;
-  }
-  
-  .apple-glow {
-    box-shadow: 0 0 15px rgba(var(--gold-accent-rgb), 0.3);
-  }
-  
-  .gold-text {
-    color: var(--gold-accent);
-  }
-  
-  .gold-border {
-    border-color: var(--gold-accent);
-  }
-  
-  .gold-bg {
-    background-color: var(--gold-accent);
-  }
-  
-  .smooth-shadow {
-    @apply transition-shadow duration-300 ease-in-out;
-  }
-  
-  .smooth-shadow:hover {
-    @apply shadow-lg;
-  }
 }
