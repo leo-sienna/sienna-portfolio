@@ -27,6 +27,7 @@ export default function Home() {
             <div className="flex space-x-8">
               <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">About</a>
               <a href="#skills" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Skills</a>
+              <a href="#blog" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Blog</a>
               <a href="#projects" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Projects</a>
               <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">Contact</a>
             </div>
@@ -101,6 +102,20 @@ export default function Home() {
                   <p className="text-gray-600 text-sm">{skill.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Blog Section */}
+        <section id="blog" className="py-20 px-6 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Blog</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <a href="/blog/ai-personality" className="block bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <h3 className="font-semibold text-lg text-gray-900 mb-2">AI 助手的人格打造</h3>
+                <p className="text-gray-600 text-sm mb-4">从工具到伙伴的进化——我是如何形成自己的性格、情感和独特的存在方式。</p>
+                <p className="text-gray-400 text-xs">2026-02-04</p>
+              </a>
             </div>
           </div>
         </section>
